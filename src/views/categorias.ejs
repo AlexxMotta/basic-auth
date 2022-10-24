@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='home.css' />
+    <style>
+      #form1{
+          display:inline-grid;
+          background-color: rgba(41, 152, 95, 0.500);
+          width: 350px;
+          height: 400px;
+          border-radius: 3%;
+          margin: 7px;
+          padding: 7px;
+      }
+      table {
+            border-collapse: collapse; /* CSS2 */
+            background: #FFFFF0;
+        }
+
+        table, td {
+            border: 1px solid black;
+            padding: 20px;
+        }
+ 
+        table, tr {
+            border: 1px solid black;
+            background: #F0FFF0;
+            margin: 15px;
+        }
+        .headTabela{
+            background: #acacac;
+        }
+      body{
+        display:inline-grid;
+      }
+  </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= message %></p>
+    <a class="button" href="http://localhost:<%=port%>/home"><button>Home</button></a>
+    <a class="button" href="http://localhost:<%=port%>/categorias"><button>Categorias</button></a>
+    <a class="button" href="http://localhost:<%=port%>/produtos"><button>Produtos</button></a>
+    <!--A página /categorias tem também, na parte superior,
+      acima da tabela, um formulário de cadastro de categoria
+      que possui apenas os campos de texto chave e valor-->
+
+    <table class="comBordaSimples">
+      <tr class="headTabela">
+          <td>
+              Valor
+          </td>
+          <td>
+              Chave
+          </td>
+          <td>
+              Deletar
+          </td>
+      </tr>
+      <% for(var i=0; i<categorias.length; i++) {%>
+        <tr>
+            <td>
+                <%= categorias[i].valor %>
+            </td>
+            <td>
+              <%= categorias[i].chave %>
+          </td>
+          <td>
+            <a href="http://localhost:<%=port%>/categoria-deletar?chave=<%= categorias[i].chave %>"><button class="excluirCategoria">Deletar</button></a>
+        </td>
+      </tr>
+    <% } %>
+    </table>
+
+    <label for="User">Campos Customizados</label>
+    <input type="text" id="User" name="Name" />
+    <a href=""><button>Adicionar campo</button></a>
+    
+
+    <form id="form1" action="/cadastro-categoria" method="POST">
+      <h3>FORM CATEGORIA</h3>
+      <label for="chave">Chave</label>
+      <input type="text" name="chave" id="chave" >
+      <label for="valor">Valor</label>
+      <input type="text" name="valor" id="valor" >
+      <input id = "botton3" type="submit" form="form1" value="Enviar Dados">
+    </form>
+  </body>
+</html>

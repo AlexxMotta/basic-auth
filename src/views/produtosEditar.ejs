@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <style>
+        #form1{
+          display:inline-grid;
+          background-color: rgba(41, 152, 95, 0.500);
+          width: 350px;
+          height: 400px;
+          border-radius: 3%;
+          margin: 7px;
+          padding: 7px;
+      }
+        table {
+            border-collapse: collapse; /* CSS2 */
+            background: #FFFFF0;
+        }
+
+        table, td {
+            border: 1px solid black;
+            padding: 20px;
+        }
+ 
+        table, tr {
+            border: 1px solid black;
+            background: #F0FFF0;
+            margin: 15px;
+        }
+        .headTabela{
+            background: #acacac;
+        }
+        </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p><%= message %></p>
+    <a class="button" href="http://localhost:<%=port%>/home"><button>Home</button></a>
+    <a class="button" href="http://localhost:<%=port%>/categorias"><button>Categorias</button></a>
+    <a class="button" href="http://localhost:<%=port%>/produtos"><button>Produtos</button></a>
+    </br>
+    </br>
+    <form id="form1" action="/form-editar-produtos" method="POST">
+        <h3>FORM</h3>
+        <label for="nome">ID</label>
+        <input type="text" value="<%=produtos[position].id%>" disabled>
+        <input type="hidden" name="id" id="id" value="<%=produtos[position].id%>">
+        <label for="categoria">Categoria</label>
+        <select name="categoria" for="categoria">
+            <option value="<%= produtos[position].categoria %>"><%= produtos[position].categoria %></option>
+            <% for(var i=0; i<categorias.length; i++) {%>
+            <option value="<%= categorias[i].valor %>"><%= categorias[i].valor %></option>
+          <% } %> 
+        </select>
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="Nome" value="<%=produtos[position].nome%>">
+        <label for="descrição">Descrisão</label>
+        <input type="text" name="descrição" id="descrição" value="<%=produtos[position].descrição%>">
+        <label for="valor">Valor</label>
+        <input type="text" name="valor" id="valor" value="<%=produtos[position].valor%>">
+        <input id = "botton3" type="submit" form="form1" value="Enviar Dados">
+    </form>
+</body>
+</html>

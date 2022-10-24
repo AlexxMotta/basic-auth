@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos</title>
+</head>
+<body>
+  <div>
+      <h1>Loja - Produtos</h1>
+      <h1>-<%= user %> </h1>
+  </div>
+  <div>
+    <h2>Produtos Cadastrados</h2>
+  </div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Categorias</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+       
+      </tr>
+      <% for( let index = 0; index < prod.length; index++ ) { %>
+        <tr>
+          
+          <td><%= prod[index]._id %> </td>
+          <td><%= prod[index].categoria %></td>
+          <td><%= prod[index].nome %></td>
+          <td><%= prod[index].descricao %></td>
+          <td><%= prod[index].valor %></td>
+        </tr>
+        <% } %>
+    </table>
+
+    <button><a href="/produtos/meus-produtos">Meus Produtos</a></button>
+    <button><a href="/produtos/produto-novo">Produto Novo</a></button>
+    <button><a href="/home">Home</a></button>
+  
+  </div>
+</body>
+</html>

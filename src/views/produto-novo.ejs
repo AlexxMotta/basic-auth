@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <link rel='stylesheet' href='home.css' />
+    <style>
+    #form1{
+        display:inline-grid;
+        background-color: rgba(41, 152, 95, 0.500);
+        width: 350px;
+        height: 450px;
+        border-radius: 3%;
+        margin: 7px;
+        padding: 7px;
+    }
+    body{
+      display:inline-grid;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Loja - Produtos</h1>
+    <h1>-<%= user %> </h1>
+    <button><a href="/produtos/meus-produtos">Meus Produtos</a></button>
+
+     <a class="button" href="http://localhost:<%=port%>/home"><button>Home</button></a>
+ 
+    <!--A página /categorias tem também, na parte superior,
+      acima da tabela, um formulário de cadastro de categoria
+      que possui apenas os campos de texto chave e valor-->
+
+      <form id="form1" action="/form-produtos" method="POST">
+        <h3>NOVO PRODUTO</h3>
+        <label for="categoria">Categoria</label>
+        <select name="categoria" for="categoria">
+          <% for(var i=0; i<categorias.length; i++) {%>
+            <option value="<%= categorias[i].valor %>"><%= categorias[i].valor %></option>
+          <% } %> 
+        </select>
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="Nome">
+        <label for="descricao">Descrição</label>
+        <input type="text" name="descricao" id="descricao" >
+        <label for="valor">Valor</label>
+        <input type="text" name="valor" id="valor" >
+        <input type="hidden" name="username" id="username" value="<%= user %>">
+        <input id = "botton3" type="submit" form="form1" value="Enviar Dados">
+    </form>
+  </body>
+</html>
